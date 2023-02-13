@@ -1,21 +1,11 @@
 package main
 
 import (
-	"net/http"
-
-	"github.com/gin-gonic/gin"
+	"github.com/math-sasso/api-go-gin/database"
+	"github.com/math-sasso/api-go-gin/routes"
 )
 
-func ExibeTodosALunos(c *gin.Context) {
-	c.JSON(http.StatusOK, gin.H{
-		"id":   "1",
-		"nome": "Matheus Sasso",
-	})
-}
-
 func main() {
-	r := gin.Default()
-	r.GET("/alunos", ExibeTodosALunos)
-	r.Run()
-
+	database.ConectaComBancoDeDados()
+	routes.HandleRequests()
 }
